@@ -33,5 +33,10 @@
         "psr-4": {
             "Ekyna\\Component\\Payum\\Monetico\\": "src/"
         }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-1.7-main": "1.7.x-dev"
+        }
     }
 }
