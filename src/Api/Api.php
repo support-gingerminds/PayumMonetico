@@ -70,7 +70,6 @@ class Api
      */
     public function createPaymentForm(array $data)
     {
-        dd($this->config);
         $this->ensureApiIsConfigured();
 
         if (array_key_exists('context', $data)) {
