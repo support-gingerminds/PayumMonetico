@@ -21,6 +21,7 @@ class ConfigResolver extends OptionsResolver
             ->setDefaults([
                 'mode'  => Api::MODE_TEST,
                 'debug' => false,
+                'test_email' => ''
             ])
             ->setRequired([
                 'tpe',
@@ -32,6 +33,7 @@ class ConfigResolver extends OptionsResolver
             ->setAllowedTypes('key', 'string')
             ->setAllowedTypes('company', 'string')
             ->setAllowedTypes('debug', 'bool')
+            ->setAllowedTypes('test_email', 'string')
             ->setAllowedValues('mode', [Api::MODE_TEST, Api::MODE_PRODUCTION]);
     }
 }

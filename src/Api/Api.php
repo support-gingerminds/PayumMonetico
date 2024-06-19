@@ -72,6 +72,25 @@ class Api
     {
         $this->ensureApiIsConfigured();
 
+        if (array_key_exists('context', $data)) {
+            if (array_key_exists('billing', $data['context']) && array_key_exists('stateOrProvince', $data['context']['billing'])) {
+                unset($data['context']['billing']['stateOrProvince']);
+            }
+
+            if (array_key_exists('shipping', $data['context']) && array_key_exists('stateOrProvince', $data['context']['shipping'])) {
+                unset($data['context']['shipping']['stateOrProvince']);
+            }
+        }
+
+        if (
+            self::MODE_TEST === $this->config['mode']
+            && array_key_exists('test_email', $this->config)
+            && '' !== $this->config['test_email']
+            && filter_var($this->config['test_email'], FILTER_VALIDATE_EMAIL)
+        ) {
+            $data['email'] = $this->config['test_email'];
+        }
+
         try {
             $data = $this
                 ->getRequestOptionsResolver()

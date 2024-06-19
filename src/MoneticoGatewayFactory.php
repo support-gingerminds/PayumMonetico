@@ -71,6 +71,7 @@ class MoneticoGatewayFactory extends GatewayFactory
                     'key'     => $config['key'],
                     'company' => $config['company'],
                     'debug'   => $config['debug'],
+                    'test_email'   => $config['test_email'],
                 ]);
 
                 return $api;
