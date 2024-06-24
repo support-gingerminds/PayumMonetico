@@ -63,7 +63,7 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
             return;
         }
 
-        $this->logger->debug($message);
+        $this->logger->error($message);
     }
 
     /**
@@ -83,8 +83,6 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
             return "$key: $value";
         }, array_keys($data), $data);
 
-        dd($this->logger);
-
-        $this->logger->debug($message . ': ' . implode(', ', $data));
+        $this->logger->error($message . ': ' . implode(', ', $data));
     }
 }
