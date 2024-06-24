@@ -103,6 +103,8 @@ class Api
 
                 $cumulFrac += $frac;
             }
+
+            dd($data);
         }
 
         if (
