@@ -2,6 +2,8 @@
 
 namespace Ekyna\Component\Payum\Monetico\Action\Api;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Ekyna\Component\Payum\Monetico\Api\Api;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
@@ -29,6 +31,14 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
      * @var LoggerInterface
      */
     private $logger;
+
+    public function __construct()
+    {
+        $logger = new Logger('monetico_debug');
+        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
+
+        $this->logger = $logger;
+    }
 
 
     /**
