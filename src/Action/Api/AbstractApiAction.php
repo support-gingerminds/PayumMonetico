@@ -75,8 +75,6 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
             return;
         }
 
-        dd($message, $data, $filterKeys);
-
         if (!empty($filterKeys)) {
             $data = array_intersect_key($data, array_flip($filterKeys));
         }
