@@ -138,6 +138,14 @@ class Api
         ];
 
         $fields['nbrech'] = (0 < $count = count($data['schedule'])) ? $count : null;
+        $formattedSchedule = [];
+
+        foreach ($data['schedule'] as $key => $schedule) {
+            $formattedSchedule[$key + 1] = $schedule;
+        }
+
+        $data['schedule'] = $formattedSchedule;
+
         for ($i = 1; $i < 5; $i++) {
             if (!isset($data['schedule'][$i])) {
                 $fields['dateech' . $i] = null;
@@ -145,13 +153,9 @@ class Api
                 continue;
             }
 
-            dump($i, $data['schedule'][$i]);
-
             $fields['dateech' . $i] = $data['schedule'][$i]['date'];
             $fields['montantech' . $i] = $data['schedule'][$i]['amount'] . $data['currency'];
         }
-
-        dd($fields, $data);
 
         $optional = [
             'aliascb',
