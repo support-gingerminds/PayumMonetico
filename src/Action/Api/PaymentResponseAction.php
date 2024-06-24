@@ -6,6 +6,8 @@ use Ekyna\Component\Payum\Monetico\Request\PaymentResponse;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\GetHttpRequest;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class PaymentResponseAction
@@ -14,6 +16,15 @@ use Payum\Core\Request\GetHttpRequest;
  */
 class PaymentResponseAction extends AbstractApiAction
 {
+
+    public function __construct(
+        #[Autowire('@logger')]
+        LoggerInterface $logger
+    )
+    {
+        $this->logger = $logger;
+    }
+
     /**
      * @inheritdoc
      */

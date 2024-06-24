@@ -25,9 +25,10 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
      */
     protected $api;
 
-    public function __construct(private LoggerInterface $logger)
-    {
-    }
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
 
     /**
