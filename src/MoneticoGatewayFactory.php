@@ -5,6 +5,7 @@ namespace Ekyna\Component\Payum\Monetico;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 use Payum\Core\GatewayFactoryInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class MoneticoGatewayFactory
@@ -13,6 +14,13 @@ use Payum\Core\GatewayFactoryInterface;
  */
 class MoneticoGatewayFactory extends GatewayFactory
 {
+    public function __construct(
+        #[Autowire('@logger')]
+        private LoggerInterface $logger
+    )
+    {
+    }
+
     /**
      * Builds a new factory.
      *
@@ -42,7 +50,7 @@ class MoneticoGatewayFactory extends GatewayFactory
             'payum.action.status'  => new Action\StatusAction(),
             'payum.action.sync'    => new Action\SyncAction(),
 
-            'payum.action.api.payment_response' => new Action\Api\PaymentResponseAction(),
+            'payum.action.api.payment_response' => new Action\Api\PaymentResponseAction($this->logger),
             'payum.action.api.payment_form'     => function (ArrayObject $config) {
                 return new Action\Api\PaymentFormAction($config['payum.template.api_request']);
             },

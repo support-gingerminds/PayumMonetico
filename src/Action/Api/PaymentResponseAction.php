@@ -18,7 +18,6 @@ class PaymentResponseAction extends AbstractApiAction
 {
 
     public function __construct(
-        #[Autowire('@logger')]
         LoggerInterface $logger
     )
     {
