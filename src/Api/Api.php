@@ -164,7 +164,6 @@ class Api
      */
     public function checkPaymentResponse(array $data)
     {
-        dd($data);
         if (!isset($data['MAC'])) {
             return false;
         }
