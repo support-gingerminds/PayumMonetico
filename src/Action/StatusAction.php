@@ -26,7 +26,6 @@ class StatusAction implements ActionInterface
         $model = ArrayObject::ensureArrayObject($request->getModel());
 
         if (false == $code = $model['code-retour']) {
-            dd($model);
             if (false != $code = $model['state_override']) {
                 if ($code === 'canceled') {
                     $request->markCanceled();
