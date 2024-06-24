@@ -103,8 +103,6 @@ class Api
 
                 $cumulFrac += $frac;
             }
-
-            dd($data);
         }
 
         if (
@@ -141,6 +139,7 @@ class Api
 
         $fields['nbrech'] = (0 < $count = count($data['schedule'])) ? $count : null;
         for ($i = 1; $i < 5; $i++) {
+            dump($i, isset($data['schedule'][$i]));
             if (!isset($data['schedule'][$i])) {
                 $fields['dateech' . $i] = null;
                 $fields['montantech' . $i] = null;
@@ -150,6 +149,8 @@ class Api
             $fields['dateech' . $i] = $data['schedule'][$i]['date'];
             $fields['montantech' . $i] = $data['schedule'][$i]['amount'] . $data['currency'];
         }
+
+        dd($fields);
 
         $optional = [
             'aliascb',
