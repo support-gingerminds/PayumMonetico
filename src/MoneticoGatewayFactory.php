@@ -35,7 +35,7 @@ class MoneticoGatewayFactory extends GatewayFactory
     protected function populateConfig(ArrayObject $config)
     {
         $logger = new Logger('monetico_debug');
-        $logger->pushHandler(new StreamHandler(__DIR__ . '/moneticodebug.log', Logger::DEBUG));
+        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
 
         $paymentResponseAction = new Action\Api\PaymentResponseAction();
         $paymentResponseAction->setLogger($logger);
