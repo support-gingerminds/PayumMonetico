@@ -93,7 +93,7 @@ class Api
                 $date = $date->modify('+' . $i - 1 . ' month');
                 $data['schedule'][$i]['date'] = $date->format('d/m/Y');
 
-                if ($i === $frac) {
+                if ($i === $count) {
                     $data['schedule'][$i]['amount'] = floatval($data['amount']) - $cumulFrac;
                 } else {
                     $data['schedule'][$i]['amount'] = $frac;
