@@ -34,6 +34,9 @@ class MoneticoGatewayFactory extends GatewayFactory
      */
     protected function populateConfig(ArrayObject $config)
     {
+        $responseAction = new Action\Api\PaymentResponseAction();
+        $responseAction->setLogger();
+
         $config->defaults([
             'payum.factory_name'  => 'monetico',
             'payum.factory_title' => 'Monetico',
@@ -45,9 +48,11 @@ class MoneticoGatewayFactory extends GatewayFactory
             'payum.action.status'  => new Action\StatusAction(),
             'payum.action.sync'    => new Action\SyncAction(),
 
-            'payum.action.api.payment_response' => new Action\Api\PaymentResponseAction(),
+            'payum.action.api.payment_response' => $responseAction,
             'payum.action.api.payment_form'     => function (ArrayObject $config) {
-                return new Action\Api\PaymentFormAction($config['payum.template.api_request']);
+                    $formAction = new Action\Api\PaymentFormAction($config['payum.template.api_request']);
+                    $formAction->setLogger();
+                return $formAction;
             },
         ]);
 

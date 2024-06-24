@@ -32,15 +32,6 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
      */
     private $logger;
 
-    public function __construct()
-    {
-        $logger = new Logger('monetico_debug');
-        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
-
-        $this->logger = $logger;
-    }
-
-
     /**
      * @inheritDoc
      */
@@ -56,8 +47,11 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
     /**
      * {@inheritDoc}
      */
-    public function setLogger(LoggerInterface $logger): void
+    public function setLogger(): void
     {
+        $logger = new Logger('monetico_debug');
+        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
+
         $this->logger = $logger;
     }
 
