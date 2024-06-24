@@ -16,14 +16,6 @@ use Psr\Log\LoggerInterface;
  */
 class PaymentResponseAction extends AbstractApiAction
 {
-
-    public function __construct(
-        LoggerInterface $logger
-    )
-    {
-        $this->logger = $logger;
-    }
-
     /**
      * @inheritdoc
      */

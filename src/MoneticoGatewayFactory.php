@@ -14,13 +14,6 @@ use Psr\Log\LoggerInterface;
  */
 class MoneticoGatewayFactory extends GatewayFactory
 {
-    public function __construct(
-        #[Autowire('@logger')]
-        private LoggerInterface $logger
-    )
-    {
-    }
-
     /**
      * Builds a new factory.
      *
@@ -39,6 +32,7 @@ class MoneticoGatewayFactory extends GatewayFactory
      */
     protected function populateConfig(ArrayObject $config)
     {
+        date_date_set($config);
         $config->defaults([
             'payum.factory_name'  => 'monetico',
             'payum.factory_title' => 'Monetico',
@@ -50,7 +44,7 @@ class MoneticoGatewayFactory extends GatewayFactory
             'payum.action.status'  => new Action\StatusAction(),
             'payum.action.sync'    => new Action\SyncAction(),
 
-            'payum.action.api.payment_response' => new Action\Api\PaymentResponseAction($this->logger),
+            'payum.action.api.payment_response' => new Action\Api\PaymentResponseAction(),
             'payum.action.api.payment_form'     => function (ArrayObject $config) {
                 return new Action\Api\PaymentFormAction($config['payum.template.api_request']);
             },
