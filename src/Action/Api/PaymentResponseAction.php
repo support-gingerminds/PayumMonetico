@@ -36,11 +36,6 @@ class PaymentResponseAction extends AbstractApiAction
             return;
         }
 
-        $logger = new Logger('monetico_debug');
-        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
-        $logger->error($httpRequest);
-        $logger->error($data);
-
         $this->logResponseData($data);
 
         // Check amount
