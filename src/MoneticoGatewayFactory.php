@@ -38,6 +38,8 @@ class MoneticoGatewayFactory extends GatewayFactory
         $paymentResponseAction = new Action\Api\PaymentResponseAction();
         $paymentResponseAction->setLogger($logger);
 
+        $logger->error('test');
+
         $config->defaults([
             'payum.factory_name'  => 'monetico',
             'payum.factory_title' => 'Monetico',
