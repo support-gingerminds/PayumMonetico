@@ -54,7 +54,7 @@ class MoneticoGatewayFactory extends GatewayFactory
                 'tpe'     => null,
                 'key'     => null,
                 'company' => null,
-                'debug'   => false,
+                'debug'   => true,
             ];
 
             $config->defaults($config['payum.default_options']);
