@@ -82,6 +82,29 @@ class Api
             }
         }
 
+        if ('7291804' == $this->config['tpe']) {
+            $date = new \DateTime();
+            $count = 3;
+            $frac = round(floatval($data['amount']) / $count, 2);
+            $data['schedule'] = [];
+            $cumulFrac = 0;
+
+            for ($i=0; $i<$frac; $i++) {
+                $date = $date->modify('+' . $i . ' month');
+                $data['schedule'][$i + 1]['date'] = $date->format('d/m/Y');
+
+                if ($i === $frac - 1) {
+                    $data['schedule'][$i + 1]['amount'] = floatval($data['amount']) - $cumulFrac;
+                } else {
+                    $data['schedule'][$i + 1]['amount'] = $frac;
+                }
+
+                $cumulFrac += $frac;
+            }
+
+            dd($data);
+        }
+
         if (
             self::MODE_TEST === $this->config['mode']
             && array_key_exists('test_email', $this->config)
