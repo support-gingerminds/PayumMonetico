@@ -3,6 +3,7 @@
 namespace Ekyna\Component\Payum\Monetico;
 
 use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 use Payum\Core\GatewayFactoryInterface;
@@ -34,6 +35,7 @@ class MoneticoGatewayFactory extends GatewayFactory
     protected function populateConfig(ArrayObject $config)
     {
         $logger = new Logger('monetico_debug');
+        $logger->pushHandler(new StreamHandler(__DIR__ . '/moneticodebug.log', Logger::DEBUG));
 
         $paymentResponseAction = new Action\Api\PaymentResponseAction();
         $paymentResponseAction->setLogger($logger);
