@@ -41,8 +41,6 @@ class PaymentResponseAction extends AbstractApiAction
             return;
         }
 
-        dd($data);
-
         // Check the response signature
         if ($this->api->checkPaymentResponse($data)) {
             // Update the payment details
