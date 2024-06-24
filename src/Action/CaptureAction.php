@@ -31,6 +31,8 @@ class CaptureAction implements ActionInterface, GatewayAwareInterface
 
         $model = ArrayObject::ensureArrayObject($request->getModel());
 
+        dd($model, $request);
+
         if ($request->getToken()) {
             // Done redirection urls
             $targetUrl = $request->getToken()->getTargetUrl();
