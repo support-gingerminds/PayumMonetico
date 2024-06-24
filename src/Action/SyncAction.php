@@ -29,8 +29,6 @@ class SyncAction implements ActionInterface, GatewayAwareInterface
 
         //$model = ArrayObject::ensureArrayObject($request->getModel());
 
-        dd($request);
-
         $this->gateway->execute(new PaymentResponse($request->getModel()));
     }
 
