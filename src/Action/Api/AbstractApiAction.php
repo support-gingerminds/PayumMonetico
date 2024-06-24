@@ -47,11 +47,8 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
     /**
      * {@inheritDoc}
      */
-    public function setLogger(): void
+    public function setLogger(LoggerInterface $logger): void
     {
-        $logger = new Logger('monetico_debug');
-        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
-
         $this->logger = $logger;
     }
 
