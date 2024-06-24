@@ -91,7 +91,7 @@ class Api
 
             for ($i=1; $i<=$frac; $i++) {
                 if ($i > 1) {
-                    $date = $date->modify('+' . $i . ' month');
+                    $date = $date->modify('+' . 1 . ' month');
                 }
                 $data['schedule'][$i]['date'] = $date->format('d/m/Y');
 
@@ -103,8 +103,6 @@ class Api
 
                 $cumulFrac += $frac;
             }
-
-            dd($data);
         }
 
         if (
