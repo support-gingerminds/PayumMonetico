@@ -2,6 +2,8 @@
 
 namespace Ekyna\Component\Payum\Monetico\Action\Api;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Ekyna\Component\Payum\Monetico\Request\PaymentResponse;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;
@@ -35,6 +37,11 @@ class PaymentResponseAction extends AbstractApiAction
         } else {
             return;
         }
+
+        $logger = new Logger('monetico_debug');
+        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::DEBUG));
+        $logger->error($httpRequest);
+        $logger->error($data);
 
         $this->logResponseData($data);
 
