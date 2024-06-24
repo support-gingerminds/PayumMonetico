@@ -89,7 +89,7 @@ class Api
             $data['schedule'] = [];
             $cumulFrac = 0;
 
-            for ($i=1; $i<=$frac; $i++) {
+            for ($i=1; $i<=$count; $i++) {
                 if ($i > 1) {
                     $date = $date->modify('+' . 1 . ' month');
                 }
@@ -104,8 +104,6 @@ class Api
                 $cumulFrac += $frac;
             }
         }
-
-        dd($data);
 
         if (
             self::MODE_TEST === $this->config['mode']
