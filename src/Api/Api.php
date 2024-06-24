@@ -89,14 +89,14 @@ class Api
             $data['schedule'] = [];
             $cumulFrac = 0;
 
-            for ($i=0; $i<$frac; $i++) {
-                $date = $date->modify('+' . $i . ' month');
-                $data['schedule'][$i + 1]['date'] = $date->format('d/m/Y');
+            for ($i=1; $i<=$frac; $i++) {
+                $date = $date->modify('+' . $i - 1 . ' month');
+                $data['schedule'][$i]['date'] = $date->format('d/m/Y');
 
-                if ($i === $frac - 1) {
-                    $data['schedule'][$i + 1]['amount'] = floatval($data['amount']) - $cumulFrac;
+                if ($i === $frac) {
+                    $data['schedule'][$i]['amount'] = floatval($data['amount']) - $cumulFrac;
                 } else {
-                    $data['schedule'][$i + 1]['amount'] = $frac;
+                    $data['schedule'][$i]['amount'] = $frac;
                 }
 
                 $cumulFrac += $frac;
