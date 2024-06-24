@@ -139,18 +139,19 @@ class Api
 
         $fields['nbrech'] = (0 < $count = count($data['schedule'])) ? $count : null;
         for ($i = 1; $i < 5; $i++) {
-            dump($i, isset($data['schedule'][$i]));
             if (!isset($data['schedule'][$i])) {
                 $fields['dateech' . $i] = null;
                 $fields['montantech' . $i] = null;
                 continue;
             }
 
+            dump($i, $data['schedule'][$i]);
+
             $fields['dateech' . $i] = $data['schedule'][$i]['date'];
             $fields['montantech' . $i] = $data['schedule'][$i]['amount'] . $data['currency'];
         }
 
-        dd($fields);
+        dd($fields, $data);
 
         $optional = [
             'aliascb',
