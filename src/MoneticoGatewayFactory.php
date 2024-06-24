@@ -32,7 +32,6 @@ class MoneticoGatewayFactory extends GatewayFactory
      */
     protected function populateConfig(ArrayObject $config)
     {
-        dd($config);
         $config->defaults([
             'payum.factory_name'  => 'monetico',
             'payum.factory_title' => 'Monetico',
