@@ -90,7 +90,9 @@ class Api
             $cumulFrac = 0;
 
             for ($i=1; $i<=$frac; $i++) {
-                $date = $date->modify('+' . $i - 1 . ' month');
+                if ($i > 1) {
+                    $date = $date->modify('+' . $i . ' month');
+                }
                 $data['schedule'][$i]['date'] = $date->format('d/m/Y');
 
                 if ($i === $count) {
