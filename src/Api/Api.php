@@ -105,8 +105,6 @@ class Api
             }
         }
 
-        dd($data);
-
         if (
             self::MODE_TEST === $this->config['mode']
             && array_key_exists('test_email', $this->config)
