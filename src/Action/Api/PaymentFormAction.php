@@ -66,6 +66,7 @@ class PaymentFormAction extends AbstractApiAction
      */
     private function logRequestData(array $data)
     {
+        dd($data);
         $this->logData("[Monetico] Request", $data, [
             'trans_id',
             'reference',
