@@ -30,6 +30,8 @@ class PaymentResponseAction extends AbstractApiAction
 
         $this->gateway->execute($httpRequest = new GetHttpRequest());
 
+        dd($httpRequest);
+
         if (isset($httpRequest->request['code-retour'])) {
             $data = $httpRequest->request;
         } elseif (isset($httpRequest->query['code-retour'])) {

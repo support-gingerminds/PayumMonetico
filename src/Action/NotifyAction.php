@@ -30,8 +30,6 @@ class NotifyAction implements ActionInterface, GatewayAwareInterface
 
         $details = ArrayObject::ensureArrayObject($request->getModel());
 
-        dd($details);
-
         $this->gateway->execute(new Sync($details));
     }
 
