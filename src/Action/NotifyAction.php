@@ -9,6 +9,8 @@ use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Request\Notify;
 use Payum\Core\Request\Sync;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 /**
  * Class NotifyAction
@@ -29,6 +31,10 @@ class NotifyAction implements ActionInterface, GatewayAwareInterface
         RequestNotSupportedException::assertSupports($this, $request);
 
         $details = ArrayObject::ensureArrayObject($request->getModel());
+
+        $logger = new Logger('moneticodebug');
+        $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug', Logger::DEBUG));
+        $logger->error($details);
 
         $this->gateway->execute(new Sync($details));
     }
