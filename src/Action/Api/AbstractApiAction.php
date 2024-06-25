@@ -63,7 +63,7 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
             return;
         }
 
-        $this->logger->debug($message);
+        $this->logger->error($message);
     }
 
     /**
