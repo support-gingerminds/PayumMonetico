@@ -83,6 +83,6 @@ abstract class AbstractApiAction implements ActionInterface, GatewayAwareInterfa
             return "$key: $value";
         }, array_keys($data), $data);
 
-        $this->logger->debug($message . ': ' . implode(', ', $data));
+        $this->logger->error($message . ': ' . implode(', ', $data));
     }
 }
