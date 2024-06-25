@@ -82,7 +82,7 @@ class Api
             }
         }
 
-        if (strpos(substr($this->config['tpe'], -4), "1804")) {
+        if (str_ends_with($this->config['tpe'], "1804")) {
             $date = new \DateTime();
             $count = 3;
             $frac = round(floatval($data['amount']) / $count, 2);
