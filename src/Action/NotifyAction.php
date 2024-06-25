@@ -34,7 +34,7 @@ class NotifyAction implements ActionInterface, GatewayAwareInterface
 
         $logger = new Logger('moneticodebug');
         $logger->pushHandler(new StreamHandler('/home/www/lescuyer-pp/public_html/current/var/log/moneticodebug.log', Logger::ERROR));
-        $logger->error($details);
+        $logger->error('test');
 
         $this->gateway->execute(new Sync($details));
     }
