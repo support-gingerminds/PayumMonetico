@@ -90,6 +90,7 @@ class PaymentResponseAction extends AbstractApiAction
             'originetr',
             'veres',
             'pares',
+            'modepaiement'
         ]);
     }
 
