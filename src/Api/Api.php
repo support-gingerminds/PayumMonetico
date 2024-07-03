@@ -81,7 +81,6 @@ class Api
                 unset($data['context']['shipping']['stateOrProvince']);
             }
         }
-        dd($this->config['tpe_type']);
 
         if (1 !== (int)$this->config['tpe_type']) {
             $date = new \DateTime();
