@@ -82,9 +82,9 @@ class Api
             }
         }
 
-        if (str_ends_with($this->config['tpe'], "1804")) {
+        if (1 !== $this->config['tpe_type']) {
             $date = new \DateTime();
-            $count = 3;
+            $count = $this->config['tpe_type'];
             $frac = round(floatval($data['amount']) / $count, 2);
             $data['schedule'] = [];
             $cumulFrac = 0;
