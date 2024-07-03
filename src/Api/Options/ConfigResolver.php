@@ -21,8 +21,7 @@ class ConfigResolver extends OptionsResolver
             ->setDefaults([
                 'mode'  => Api::MODE_TEST,
                 'debug' => false,
-                'test_email' => '',
-                'tpe_type' => 1
+                'test_email' => ''
             ])
             ->setRequired([
                 'tpe',
