@@ -174,7 +174,6 @@ class Api
 
         ksort($fields);
 
-        dd($fields);
         $fields['MAC'] = $this->computeMac($fields);
 
         $fields['texte-libre'] = $this->htmlEncode($data['comment']);
