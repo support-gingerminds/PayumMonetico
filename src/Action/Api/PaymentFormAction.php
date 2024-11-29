@@ -48,8 +48,6 @@ class PaymentFormAction extends AbstractApiAction
 
         $data = $model->getArrayCopy();
 
-        dd($model, $data);
-
         $this->logRequestData($data);
 
         $form = $this->api->createPaymentForm($data);
