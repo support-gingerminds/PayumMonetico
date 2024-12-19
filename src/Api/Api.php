@@ -82,7 +82,7 @@ class Api
             }
         }
 
-        $data['amount'] = $data['amount'] / 10000;
+        $data['amount'] = $data['amount'] / 1000;
 
         if (1 !== (int)$this->config['tpe_type']) {
             $date = new \DateTime();
