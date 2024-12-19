@@ -85,7 +85,7 @@ class Api
         if (1 !== (int)$this->config['tpe_type']) {
             $date = new \DateTime();
             $count = $this->config['tpe_type'];
-            $frac = round(floatval($data['amount']) / $count, 2);
+            $frac = round(floatval($data['amount']) / $count, 4);
             $data['schedule'] = [];
             $cumulFrac = 0;
 
@@ -96,9 +96,9 @@ class Api
                 $data['schedule'][$i]['date'] = $date->format('d/m/Y');
 
                 if ($i === $count) {
-                    $data['schedule'][$i]['amount'] = number_format(floatval($data['amount']) - $cumulFrac, 2, '.', '');
+                    $data['schedule'][$i]['amount'] = number_format(floatval($data['amount']) - $cumulFrac, 4, '.', '');
                 } else {
-                    $data['schedule'][$i]['amount'] = number_format($frac, 2, '.', '');
+                    $data['schedule'][$i]['amount'] = number_format($frac, 4, '.', '');
                 }
 
                 $cumulFrac += $frac;
