@@ -40,7 +40,6 @@ class ConvertPaymentAction implements ActionInterface, GatewayAwareInterface
             $model['reference'] = $payment->getNumber();
         }
 
-        dd($currency->exp);
         if (false == $model['amount']) {
             $this->gateway->execute($currency = new GetCurrency($payment->getCurrencyCode()));
             $amount = (string)$payment->getTotalAmount();
